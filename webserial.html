@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://google.com/jsonp?callback=alert(2);//""></script>
+    <script>
+        async function getReader(){
+         try{
+            if ("serial" in navigator) {
+             console.log('사용가능');
+        } else{
+            console.log('사용 불가능');
+            const port = await navigator.serial.requestPort();
+            await port.open({  baudRate : 9600 });
+        }
+    }catch(error){console.log(error)}
+    }
+        </script>
+   </head>
+<body>
+    <body>
+        
+        <button id="connect-button" type="button" onclick="getReader()">🔌 Connect</button>
+    
+        
+</body>
+</html>
